@@ -10,8 +10,7 @@ export default function KanbanBody({ arrayOfColumns }) {
       column: "In Progress",
       done: false,
     },
-    
-    { id: 4, title: "example in done task, column: "Done", done: true }
+    { id: 4, title: "example in done task, column: "Done", done: true },
    
   ]);
   const [isTaskFormOpen, setIsTaskFormOpen] = React.useState({
