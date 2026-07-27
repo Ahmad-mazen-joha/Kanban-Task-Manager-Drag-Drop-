@@ -1,8 +1,9 @@
 import React from "react";
 import ColumnSection from "./columnSection";
 import { DndContext } from "@dnd-kit/core";
+import { ThemContex } from "../context.js";
 export default function KanbanBody({ arrayOfColumns }) {
-   const [tasksArr, reduceTasksArr] = React.useReducer(changeTasksArr, [
+  const [tasksArr, reduceTasksArr] = React.useReducer(changeTasksArr, [
     { id: 1, title: "example to do task", column: "To Do", done: false },
     {
       id: 2,
@@ -21,7 +22,7 @@ export default function KanbanBody({ arrayOfColumns }) {
     state: false,
     id: null,
   });
-
+  let them = React.useContext(ThemContex);
   let generateId = () => {
     return Math.floor(Math.random() * 100000000);
   };
@@ -88,7 +89,7 @@ export default function KanbanBody({ arrayOfColumns }) {
 
   return (
     <>
-      <section>
+      <section className={them.themMode}>
         <DndContext onDragEnd={handleDragEnd}>
           {arrayOfColumns.map((priority) => (
             <ColumnSection
@@ -110,7 +111,10 @@ export default function KanbanBody({ arrayOfColumns }) {
         add task
       </button>
       {isTaskFormOpen.state && isTaskFormOpen.id === null ? (
-        <form className="taskAddingForm" action={addNewTask}>
+        <form
+          className={them.themMode + " " + "taskAddingForm"}
+          action={addNewTask}
+        >
           <input
             type="text"
             placeholder="enter task title"
@@ -129,7 +133,10 @@ export default function KanbanBody({ arrayOfColumns }) {
           </button>
         </form>
       ) : isTaskFormOpen.state && isTaskFormOpen.id !== null ? (
-        <form className="taskAddingForm" action={addNewTask}>
+        <form
+          className={them.themMode + " " + "taskAddingForm"}
+          action={addNewTask}
+        >
           <input
             type="text"
             placeholder="enter task title"

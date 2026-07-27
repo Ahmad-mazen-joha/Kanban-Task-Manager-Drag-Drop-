@@ -1,4 +1,6 @@
 import { useDraggable } from "@dnd-kit/core";
+import { useContext } from "react";
+import { ThemContex } from "../context.js";
 export default function TaskComponant({
   title,
   id,
@@ -12,10 +14,14 @@ export default function TaskComponant({
   const style = transform
     ? { transform: `translate(${transform.x}px, ${transform.y}px)` }
     : { padding: "0px 10px" };
-
+  let them = useContext(ThemContex);
   return (
     <>
-      <li className={column === "Done" ? "task done" : "task"}>
+      <li
+        className={
+          them.themMode + " " + (column === "Done" ? "task done" : "task")
+        }
+      >
         <span ref={setNodeRef} style={style} {...listeners} {...attributes}>
           ⠿ {title}
         </span>
