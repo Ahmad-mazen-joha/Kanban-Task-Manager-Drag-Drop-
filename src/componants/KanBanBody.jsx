@@ -3,17 +3,16 @@ import ColumnSection from "./columnSection";
 import { DndContext } from "@dnd-kit/core";
 export default function KanbanBody({ arrayOfColumns }) {
   const [tasksArr, reduceTasksArr] = React.useReducer(changeTasksArr, [
-    { id: 1, title: "make a potato", column: "To Do", done: false },
+    { id: 1, title: "example to do task", column: "To Do", done: false },
     {
       id: 2,
-      title: "make a potato prograss",
+      title: "example in prograss task",
       column: "In Progress",
       done: false,
     },
-    { id: 3, title: "make a tato", column: "To Do", done: false },
-    { id: 4, title: "make a potato done", column: "Done", done: true },
-    { id: 5, title: "make a potato", column: "To Do", done: false },
-    { id: 6, title: "make a potato done", column: "Done", done: false },
+    
+    { id: 4, title: "example in done task, column: "Done", done: true }
+   
   ]);
   const [isTaskFormOpen, setIsTaskFormOpen] = React.useState({
     state: false,
